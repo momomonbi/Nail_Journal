@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Hazuki Nail — ネイル日記</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -245,7 +245,7 @@ main{max-width:1160px;margin:0 auto;padding:40px 48px 80px;position:relative;z-i
 
 /* API KEY INPUT */
 .api-key-wrap{position:relative;}
-.api-key-input{font-family:'DM Sans',monospace;font-size:13px;padding:12px 48px 12px 14px;background:var(--surface);border:1px solid var(--border);color:var(--charcoal);outline:none;width:100%;letter-spacing:.5px;transition:border-color .3s;}
+.api-key-input{font-family:'DM Sans',monospace;font-size:16px;padding:12px 48px 12px 14px;background:var(--surface);border:1px solid var(--border);color:var(--charcoal);outline:none;width:100%;letter-spacing:.5px;transition:border-color .3s;}
 .api-key-input:focus{border-color:var(--rose);}
 .api-toggle-vis{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--mid);transition:color .2s;}
 .api-toggle-vis:hover{color:var(--rose);}
@@ -305,13 +305,37 @@ main{max-width:1160px;margin:0 auto;padding:40px 48px 80px;position:relative;z-i
 .form-group.full{grid-column:1/-1;}
 .form-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:3px;color:var(--gold);display:flex;align-items:center;gap:5px;}
 .req-mark{color:var(--required);font-size:12px;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:0;line-height:1;}
-.form-input,.form-textarea,.form-select{font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);color:var(--charcoal);outline:none;transition:border-color .3s,background .3s;width:100%;}
+.form-input,.form-textarea,.form-select{font-family:'DM Sans',sans-serif;font-size:16px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);color:var(--charcoal);outline:none;transition:border-color .3s,background .3s;width:100%;}
 .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--rose);background:var(--white);}
 .form-input.err,.form-textarea.err{border-color:var(--required)!important;background:rgba(179,74,80,.05);}
 .form-err-msg{font-size:10.5px;color:var(--required);display:none;align-items:center;gap:3px;margin-top:1px;}
 .form-err-msg.show{display:flex;}
 .form-textarea{resize:vertical;min-height:88px;}
 input[type="file"]{display:none;}
+/* API TEST */
+.api-test-result{
+  margin-top:16px;padding:14px 16px;
+  border:1px solid var(--border);
+  display:none;animation:fadeIn .3s ease;
+}
+.api-test-result.show{display:block;}
+.api-test-result.ok{border-color:#6dbb8a;background:rgba(109,187,138,0.08);}
+.api-test-result.fail{border-color:var(--required);background:rgba(179,74,80,0.06);}
+.api-test-result.loading{border-color:var(--border);background:var(--surface);}
+.api-test-header{display:flex;align-items:center;gap:9px;margin-bottom:6px;}
+.api-test-icon{font-size:18px;line-height:1;}
+.api-test-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;}
+.api-test-result.ok  .api-test-label{color:#3a9a60;}
+.api-test-result.fail .api-test-label{color:var(--required);}
+.api-test-result.loading .api-test-label{color:var(--mid);}
+.api-test-body{font-size:12.5px;color:var(--charcoal);line-height:1.7;}
+.api-test-body code{font-family:monospace;font-size:11.5px;background:rgba(0,0,0,0.06);padding:1px 5px;}
+.api-test-spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--rose);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
+
+/* ── iOS zoom prevention ── font-size must be ≥16px on all inputs */
+input:not([type="file"]):not([type="range"]),
+textarea,
+select { font-size: 16px !important; touch-action: manipulation; }
 
 /* PHOTO UPLOAD */
 .photo-upload-area{width:100%;height:158px;border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;background:var(--surface);position:relative;overflow:hidden;}
@@ -361,7 +385,7 @@ input[type="file"]{display:none;}
 .preset-dot:hover{transform:scale(1.2);border-color:var(--gold);}
 .custom-color-row{display:flex;gap:6px;align-items:center;}
 .custom-color-row input[type="color"]{display:block;width:34px;height:34px;border:1px solid var(--border);padding:2px;cursor:pointer;}
-.custom-color-row input[type="text"]{flex:1;padding:7px 9px;border:1px solid var(--border);background:var(--surface);font-size:11px;font-family:monospace;outline:none;}
+.custom-color-row input[type="text"]{flex:1;padding:7px 9px;border:1px solid var(--border);background:var(--surface);font-size:16px;font-family:monospace;outline:none;}
 .custom-color-row .add-btn{padding:7px 11px;background:var(--dark);color:var(--gold-light);border:none;font-size:11px;cursor:pointer;}
 
 /* SALON PASTE */
@@ -381,14 +405,14 @@ input[type="file"]{display:none;}
 .salon-paste-body{display:none;padding:14px;}
 .salon-paste-body.open{display:block;animation:fadeIn .25s ease;}
 .salon-paste-textarea{
-  font-family:'DM Sans',sans-serif;font-size:12.5px;line-height:1.7;
+  font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;
   padding:10px 12px;width:100%;min-height:80px;resize:vertical;
   background:var(--white);border:1px solid var(--border);
   color:var(--charcoal);outline:none;
   transition:border-color .3s;
 }
 .salon-paste-textarea:focus{border-color:var(--rose);}
-.salon-paste-textarea::placeholder{color:var(--light-text);font-size:12px;}
+.salon-paste-textarea::placeholder{color:var(--light-text);font-size:16px;}
 .salon-parse-bar{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
 .salon-parse-btn{
   font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:2px;
@@ -443,6 +467,22 @@ input[type="file"]{display:none;}
 .db-badge{position:fixed;bottom:16px;right:16px;font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:2px;color:var(--light-text);background:var(--white);border:1px solid var(--border);padding:5px 12px;z-index:50;display:flex;align-items:center;gap:6px;}
 .db-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);transition:background .3s;}
 .db-dot.ok{background:#6dbb8a;} .db-dot.err{background:var(--required);}
+
+/* API TEST RESULT */
+.api-test-result{margin-top:16px;padding:14px 16px;border:1px solid var(--border);display:none;animation:fadeIn .3s ease;}
+.api-test-result.show{display:block;}
+.api-test-result.ok  {border-color:#6dbb8a;background:rgba(109,187,138,.09);}
+.api-test-result.fail{border-color:var(--required);background:rgba(179,74,80,.06);}
+.api-test-result.busy{border-color:var(--border);background:var(--surface);}
+.api-test-header{display:flex;align-items:center;gap:9px;margin-bottom:5px;}
+.api-test-icon{font-size:19px;line-height:1;}
+.api-test-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;}
+.api-test-result.ok   .api-test-label{color:#2e9a58;}
+.api-test-result.fail .api-test-label{color:var(--required);}
+.api-test-result.busy .api-test-label{color:var(--mid);}
+.api-test-body{font-size:13px;color:var(--charcoal);line-height:1.75;}
+.api-test-body strong{color:var(--dark);}
+.api-test-body code{font-family:monospace;font-size:11.5px;background:rgba(0,0,0,.07);padding:1px 6px;border-radius:2px;}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--rose);}
@@ -560,19 +600,29 @@ input[type="file"]{display:none;}
           <div class="settings-card-desc">
             APIキーを設定すると、以下の2つのAI機能が使えるようになります。<br>
             キーはブラウザのIndexedDBにのみ保存されます。外部サーバーには送信されません。<br>
-            使用モデル：<span style="font-family:monospace;color:var(--gold);font-size:12px">gpt-5.2</span>（固定）
+            使用モデル：<span style="font-family:monospace;color:var(--gold);font-size:12px">gpt-5.4</span>（固定）
           </div>
-          <div style="margin-bottom:20px">
+          <div style="margin-bottom:16px">
             <div class="form-label" style="margin-bottom:6px">OpenAI APIキー</div>
             <div class="api-key-wrap">
-              <input type="password" class="api-key-input" id="api-key-input" placeholder="sk-••••••••••••••••••••••••••••••••••••••••••">
+              <input type="password" class="api-key-input" id="api-key-input"
+                placeholder="sk-••••••••••••••••••••••••••••••••••••••••••"
+                oninput="hideTestResult()">
               <button class="api-toggle-vis" onclick="toggleApiVis()" id="api-vis-btn" title="表示/非表示">👁</button>
             </div>
             <div class="api-status"><div class="api-status-dot" id="api-dot"></div><span id="api-status-text">未設定</span></div>
           </div>
-          <div style="display:flex;gap:10px;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
             <button class="btn-primary" onclick="saveApiKey()"><span>保存する</span></button>
+            <button class="btn-secondary" id="api-test-btn" onclick="testApiKey()">🔌 接続テスト</button>
             <button class="btn-secondary" onclick="clearApiKey()">クリア</button>
+          </div>
+          <div class="api-test-result" id="api-test-result">
+            <div class="api-test-header">
+              <span class="api-test-icon" id="api-test-icon"></span>
+              <span class="api-test-label" id="api-test-label"></span>
+            </div>
+            <div class="api-test-body" id="api-test-body"></div>
           </div>
         </div>
         <div class="settings-card">
@@ -582,7 +632,7 @@ input[type="file"]{display:none;}
             写真をアップロードすると「✨ AIで自動解析」ボタンが表示されます。タグ・カラー（HEX）・ネイリスト風コメントを自動生成します。<br><br>
             <strong style="color:var(--dark);font-size:12px">📍 日記 — お店情報自動入力</strong><br>
             ネイル日記フォームの「お店情報を貼り付け」エリアにホットペッパー等からコピーしたテキストを貼ると、サロン名・エリア・金額などを自動で各フィールドに入力します。<br><br>
-            ✏️ 生成された内容はすべて手動で編集できます。💳 APIの料金は好きな人が引き受けます。
+            ✏️ 生成された内容はすべて手動で編集できます。💳 APIの料金はあなたの好きな人が持ちます。
           </div>
         </div>
       </div>
@@ -1106,6 +1156,7 @@ async function saveApiKey(){
   apiKey=key;
   await dbPut('settings',{key:'apiKey',value:key});
   updateApiStatusUI();
+  hideTestResult();
   showToast(key?'APIキーを保存しました':'APIキーをクリアしました');
 }
 
@@ -1114,6 +1165,7 @@ async function clearApiKey(){
   apiKey='';
   await dbPut('settings',{key:'apiKey',value:''});
   updateApiStatusUI();
+  hideTestResult();
   showToast('APIキーをクリアしました');
 }
 
@@ -1122,6 +1174,102 @@ function updateApiStatusUI(){
   const txt=document.getElementById('api-status-text');
   if(apiKey){dot.className='api-status-dot set';txt.textContent='設定済み ✓';}
   else{dot.className='api-status-dot';txt.textContent='未設定';}
+}
+
+function hideTestResult(){
+  const el=document.getElementById('api-test-result');
+  el.classList.remove('show','ok','fail','busy');
+}
+
+function showTestResult(state, icon, label, bodyHtml){
+  const el=document.getElementById('api-test-result');
+  el.className='api-test-result show '+state;
+  document.getElementById('api-test-icon').textContent=icon;
+  document.getElementById('api-test-label').textContent=label;
+  document.getElementById('api-test-body').innerHTML=bodyHtml;
+}
+
+async function testApiKey(){
+  // Use the value currently typed in the input (not necessarily saved yet)
+  const keyToTest = document.getElementById('api-key-input').value.trim();
+  if(!keyToTest){
+    showTestResult('fail','⚠','キーが未入力','APIキーを入力してから接続テストを実行してください。');
+    return;
+  }
+
+  const btn=document.getElementById('api-test-btn');
+  btn.disabled=true;
+  btn.textContent='テスト中…';
+  showTestResult('busy','⏳','接続確認中','OpenAI サーバーへ接続しています…');
+
+  try {
+    // /v1/models is the lightest authenticated endpoint — no token cost
+    const resp = await fetch('https://api.openai.com/v1/models',{
+      method:'GET',
+      headers:{
+        'Authorization':'Bearer '+keyToTest,
+        'Content-Type':'application/json'
+      }
+    });
+
+    btn.disabled=false;
+    btn.textContent='🔌 接続テスト';
+
+    if(resp.ok){
+      const data = await resp.json();
+      const modelCount = data.data?.length || '複数';
+      showTestResult('ok','✅','接続成功',
+        `<strong>APIキーは正常です。</strong><br>`+
+        `利用可能なモデル数：<code>${modelCount}件</code><br>`+
+        `このキーで <code>gpt-5.4</code> を使ったAI機能が使えます。`
+      );
+      // auto-save since it's verified
+      apiKey=keyToTest;
+      await dbPut('settings',{key:'apiKey',value:keyToTest});
+      updateApiStatusUI();
+    } else {
+      let msg='';
+      try{ const e=await resp.json(); msg=e.error?.message||''; }catch(_){}
+
+      const diagnose = {
+        401: ['🔑','認証エラー（401）',
+          `<strong>APIキーが正しくありません。</strong><br>`+
+          `・キーを再確認してください（コピー時に余白や改行が入っていないか）<br>`+
+          `・OpenAI Platform で有効なキーか確認してください<br>`+
+          (msg?`<br>サーバーメッセージ：<code>${msg}</code>`:'')] ,
+        403: ['🚫','権限エラー（403）',
+          `<strong>このキーにはアクセス権限がありません。</strong><br>`+
+          `Organization または Project の権限設定を確認してください。<br>`+
+          (msg?`<br>サーバーメッセージ：<code>${msg}</code>`:'')] ,
+        429: ['⚡','レート制限 / 残高不足（429）',
+          `<strong>リクエスト制限またはAPIクレジット不足です。</strong><br>`+
+          `・OpenAI Platform でクレジット残高を確認してください<br>`+
+          `・しばらく待ってから再試行してください<br>`+
+          (msg?`<br>サーバーメッセージ：<code>${msg}</code>`:'')] ,
+        500: ['💥','サーバーエラー（500）',
+          `OpenAI 側で一時的なエラーが発生しています。しばらく待ってから再試行してください。`],
+      };
+      const d = diagnose[resp.status] || ['❌',`エラー（${resp.status}）`,
+        `予期しないエラーが返されました。`+(msg?`<br><code>${msg}</code>`:'')];
+      showTestResult('fail', d[0], d[1], d[2]);
+    }
+  } catch(err){
+    btn.disabled=false;
+    btn.textContent='🔌 接続テスト';
+
+    // Failed to fetch = network-level error
+    const isNetErr = err instanceof TypeError && err.message.toLowerCase().includes('fetch');
+    showTestResult('fail','🌐','ネットワークエラー',
+      `<strong>OpenAI サーバーへ接続できませんでした。</strong><br>`+
+      (isNetErr
+        ? `・インターネット接続を確認してください<br>`+
+          `・このHTMLファイルをブラウザで直接開いている場合、`+
+          `<code>file://</code> プロトコルでは外部APIへのリクエストがブロックされることがあります。`+
+          `Webサーバー経由（または <code>http://localhost</code>）で開くと解消される場合があります。<br>`+
+          `・VPN・ファイアウォールがブロックしている可能性もあります。`
+        : `エラー詳細：<code>${err.message}</code>`)
+    );
+  }
 }
 
 function toggleApiVis(){
