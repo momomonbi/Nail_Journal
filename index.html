@@ -151,12 +151,12 @@ SECTION HEADER
 /* =====================================================
 BUTTONS
 ===================================================== */
-.btn-primary{font-family:‘Cinzel’,serif;font-size:9.5px;letter-spacing:3px;padding:13px 26px;background:#1a1410;color:#e8d5b0;border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
-.btn-primary::before{content:’’;position:absolute;inset:0;background:#6b2d3e;transform:translateX(-100%);transition:transform .3s;}
+.btn-primary{font-family:‘Cinzel’,serif;font-size:9.5px;letter-spacing:3px;padding:13px 26px;background:var(–dark);color:var(–gold-light);border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.btn-primary::before{content:’’;position:absolute;inset:0;background:var(–burgundy);transform:translateX(-100%);transition:transform .3s;}
 .btn-primary:hover::before{transform:translateX(0);}
 .btn-primary span{position:relative;z-index:1;}
-.btn-secondary{font-family:‘DM Sans’,sans-serif;font-size:12px;padding:10px 20px;background:transparent;color:#8a7060;border:1px solid rgba(201,169,110,0.25);cursor:pointer;transition:all .3s;}
-.btn-secondary:hover{background:#f5e8e2;border-color:#c8917a;color:#a0614a;}
+.btn-secondary{font-family:‘DM Sans’,sans-serif;font-size:12px;padding:10px 20px;background:transparent;color:var(–mid);border:1px solid var(–border);cursor:pointer;transition:all .3s;}
+.btn-secondary:hover{background:var(–rose-pale);border-color:var(–rose);color:var(–rose-deep);}
 
 /* =====================================================
 DIARY CARDS
@@ -290,29 +290,29 @@ MODAL
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(5px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-backdrop.open{display:flex;animation:bdIn .3s ease;}
 @keyframes bdIn{from{opacity:0;}to{opacity:1;}}
-.modal{background:#ffffff;color:#3a2e28;width:100%;max-width:700px;max-height:92vh;overflow-y:auto;position:relative;animation:mIn .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,.3);color-scheme:light;}
+.modal{background:var(–white);color:var(–charcoal);width:100%;max-width:700px;max-height:92vh;overflow-y:auto;position:relative;animation:mIn .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,.3);}
 @keyframes mIn{from{opacity:0;transform:translateY(28px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal.detail-modal{max-width:780px;}
-.modal-header{padding:28px 36px 20px;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:#ffffff;color:#3a2e28;z-index:5;}
-.modal-title{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:300;color:#1a1410;}
+.modal-header{padding:28px 36px 20px;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:var(–white);color:var(–charcoal);z-index:5;}
+.modal-title{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:300;color:var(–dark);}
 .modal-eyebrow{font-family:‘Cinzel’,serif;font-size:8px;letter-spacing:3px;color:var(–gold);margin-bottom:3px;}
-.modal-close{width:34px;height:34px;background:#f2ebe3;border:1px solid var(–border);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;color:#3a2e28;}
-.modal-close:hover{background:#1a1410;color:#ffffff;}
-.modal-body{padding:24px 36px 32px;background:#ffffff;color:#3a2e28;}
+.modal-close{width:34px;height:34px;background:var(–surface);border:1px solid var(–border);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;color:var(–charcoal);}
+.modal-close:hover{background:var(–dark);color:#ffffff;}
+.modal-body{padding:24px 36px 32px;background:var(–white);color:var(–charcoal);}
 
 /* =====================================================
 FORM
 ===================================================== */
-.required-note{font-size:11px;color:#b8a898;margin-bottom:18px;display:flex;align-items:center;gap:4px;}
+.required-note{font-size:11px;color:var(–light-text);margin-bottom:18px;display:flex;align-items:center;gap:4px;}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .form-group{display:flex;flex-direction:column;gap:5px;}
 .form-group.full{grid-column:1/-1;}
-.form-label{font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:3px;color:#c9a96e;display:flex;align-items:center;gap:5px;}
-.req-mark{color:#b34a50;font-size:12px;font-family:‘DM Sans’,sans-serif;font-weight:600;letter-spacing:0;line-height:1;}
-.form-input,.form-textarea,.form-select{font-family:‘DM Sans’,sans-serif;font-size:16px;padding:11px 13px;background:#f2ebe3;border:1px solid rgba(201,169,110,0.25);color:#3a2e28;outline:none;transition:border-color .3s,background .3s;width:100%;color-scheme:light;}
-.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:#c8917a;background:#ffffff;}
-.form-input.err,.form-textarea.err{border-color:#b34a50 !important;background:rgba(179,74,80,.05);}
-.form-err-msg{font-size:10.5px;color:#b34a50;display:none;align-items:center;gap:3px;margin-top:1px;}
+.form-label{font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:3px;color:var(–gold);display:flex;align-items:center;gap:5px;}
+.req-mark{color:var(–required);font-size:12px;font-family:‘DM Sans’,sans-serif;font-weight:600;letter-spacing:0;line-height:1;}
+.form-input,.form-textarea,.form-select{font-family:‘DM Sans’,sans-serif;font-size:16px;padding:11px 13px;background:var(–surface);border:1px solid var(–border);color:var(–charcoal);outline:none;transition:border-color .3s,background .3s;width:100%;color-scheme:light;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(–rose);background:var(–white);}
+.form-input.err,.form-textarea.err{border-color:var(–required)!important;background:rgba(179,74,80,.05);}
+.form-err-msg{font-size:10.5px;color:var(–required);display:none;align-items:center;gap:3px;margin-top:1px;}
 .form-err-msg.show{display:flex;}
 .form-textarea{resize:vertical;min-height:88px;}
 input[type=“file”]{display:none;}
@@ -342,20 +342,20 @@ textarea,
 select { font-size: 16px !important; touch-action: manipulation; }
 
 /* PHOTO UPLOAD */
-.photo-upload-area{width:100%;height:158px;border:2px dashed rgba(201,169,110,0.25);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;background:#f2ebe3;position:relative;overflow:hidden;color-scheme:light;}
-.photo-upload-area:hover{border-color:#c8917a;background:#f5e8e2;}
+.photo-upload-area{width:100%;height:158px;border:2px dashed var(–border);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;background:var(–surface);position:relative;overflow:hidden;}
+.photo-upload-area:hover{border-color:var(–rose);background:var(–rose-pale);}
 .photo-upload-area img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.upload-hint{font-size:11px;color:#8a7060;text-align:center;line-height:1.8;pointer-events:none;}
+.upload-hint{font-size:11px;color:var(–mid);text-align:center;line-height:1.8;pointer-events:none;}
 .upload-icon{font-size:26px;margin-bottom:6px;opacity:.5;}
 .photo-change-btn{position:absolute;bottom:8px;right:8px;font-size:9.5px;font-family:‘Cinzel’,serif;letter-spacing:1px;padding:4px 10px;background:rgba(0,0,0,.68);color:var(–gold-light);border:none;cursor:pointer;z-index:2;}
 
 /* AI ANALYZE BUTTON */
 .ai-analyze-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(–surface);border:1px solid var(–border);margin-top:8px;}
-.ai-analyze-btn{font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:2px;padding:9px 18px;background:linear-gradient(135deg,var(–rose),var(–burgundy));color:white;border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;display:flex;align-items:center;gap:7px;flex-shrink:0;}
-.ai-analyze-btn:hover{opacity:.9;transform:translateY(-1px);}
-.ai-analyze-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.ai-analyze-btn{font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:2px;padding:9px 18px;background:var(–dark);color:var(–gold-light);border:2px solid var(–gold);cursor:pointer;transition:all .3s;position:relative;overflow:hidden;display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.ai-analyze-btn:hover{background:var(–burgundy);color:#ffffff;border-color:var(–burgundy);transform:translateY(-1px);}
+.ai-analyze-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
 .ai-analyze-btn .sparkle{font-size:14px;}
-.ai-analyze-hint{font-size:11px;color:var(–light-text);line-height:1.5;}
+.ai-analyze-hint{font-size:11px;color:var(–mid);line-height:1.5;}
 .ai-loading{display:none;align-items:center;gap:8px;font-size:12px;color:var(–mid);font-family:‘Cinzel’,serif;letter-spacing:1px;}
 .ai-loading.show{display:flex;}
 .spinner{width:16px;height:16px;border:2px solid var(–border);border-top-color:var(–rose);border-radius:50%;animation:spin .8s linear infinite;}
@@ -393,7 +393,7 @@ select { font-size: 16px !important; touch-action: manipulation; }
 .custom-color-row .add-btn{padding:7px 11px;background:var(–dark);color:var(–gold-light);border:none;font-size:11px;cursor:pointer;}
 
 /* SALON PASTE */
-.salon-paste-wrap{border:1px solid rgba(201,169,110,0.25);background:#f2ebe3;overflow:hidden;color-scheme:light;}
+.salon-paste-wrap{border:1px solid var(–border);background:var(–surface);overflow:hidden;}
 .salon-paste-header{
 display:flex;align-items:center;gap:10px;
 padding:10px 14px;
@@ -411,13 +411,12 @@ font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:3px;color:var(–r
 .salon-paste-textarea{
 font-family:‘DM Sans’,sans-serif;font-size:16px;line-height:1.7;
 padding:10px 12px;width:100%;min-height:80px;resize:vertical;
-background:#ffffff;border:1px solid rgba(201,169,110,0.25);
-color:#3a2e28;outline:none;
+background:var(–white);border:1px solid var(–border);
+color:var(–charcoal);outline:none;
 transition:border-color .3s;
-color-scheme:light;
 }
-.salon-paste-textarea:focus{border-color:#c8917a;}
-.salon-paste-textarea::placeholder{color:#b8a898;font-size:16px;}
+.salon-paste-textarea:focus{border-color:var(–rose);}
+.salon-paste-textarea::placeholder{color:var(–light-text);font-size:16px;}
 .salon-parse-bar{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
 .salon-parse-btn{
 font-family:‘Cinzel’,serif;font-size:8.5px;letter-spacing:2px;
@@ -493,33 +492,89 @@ border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;
 ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(–bg);} ::-webkit-scrollbar-thumb{background:var(–rose);}
 
 /* =====================================================
-FORCE LIGHT MODE — iOS dark mode override
-Re-assert all default (Rose Quartz) variables so
-iOS Safari dark mode cannot override them.
-Theme switching still works via html[data-theme].
+FORCE LIGHT MODE — iOS/OS dark mode override
+Every theme re-declares its own variables inside
+prefers-color-scheme:dark so the theme switcher
+still works while OS dark mode is fully ignored.
 ===================================================== */
 @media (prefers-color-scheme: dark) {
+
+/* ── Rose Quartz (default) ── */
 html:not([data-theme]) {
+color-scheme: light;
 –accent1:#c8917a; –accent1-deep:#a0614a; –accent1-pale:#f5e8e2;
 –accent2:#c9a96e; –accent2-light:#e8d5b0;
-–bg:#faf6f2; –surface:#f2ebe3;
-–highlight:#6b2d3e;
+–bg:#faf6f2; –surface:#f2ebe3; –highlight:#6b2d3e;
 –dark:#1a1410; –charcoal:#3a2e28; –mid:#8a7060; –muted:#b8a898;
-–white:#ffffff;
-–border:rgba(201,169,110,0.25);
+–white:#ffffff; –border:rgba(201,169,110,0.25);
 –shadow:0 8px 40px rgba(106,45,62,0.10);
 –shadow-lg:0 20px 60px rgba(106,45,62,0.18);
 –glow1:rgba(200,145,122,0.08); –glow2:rgba(107,45,62,0.07);
 –required:#b34a50;
-color-scheme: light;
 }
-html[data-theme=“lavender”]:not([data-theme=“midnight”]) {
+
+/* ── Lavender Mist ── */
+html[data-theme=“lavender”] {
 color-scheme: light;
+–accent1:#b48ecf; –accent1-deep:#8a5eae; –accent1-pale:#f0e8f8;
+–accent2:#c4a8d8; –accent2-light:#ecdff5;
+–bg:#faf7fc; –surface:#f3edf8; –highlight:#5c2d7a;
+–dark:#1a1020; –charcoal:#3a2850; –mid:#7a6090; –muted:#b8a8c8;
+–white:#ffffff; –border:rgba(180,142,207,0.28);
+–shadow:0 8px 40px rgba(92,45,122,0.10);
+–shadow-lg:0 20px 60px rgba(92,45,122,0.18);
+–glow1:rgba(180,142,207,0.10); –glow2:rgba(92,45,122,0.07);
+–required:#b34a50;
 }
-html[data-theme=“coral”] { color-scheme: light; }
-html[data-theme=“pearl”] { color-scheme: light; }
-html[data-theme=“mint”]  { color-scheme: light; }
-/* midnight is intentionally dark — leave it */
+
+/* ── Coral Sunset ── */
+html[data-theme=“coral”] {
+color-scheme: light;
+–accent1:#e87a5a; –accent1-deep:#c05030; –accent1-pale:#fdf0ec;
+–accent2:#e8b86e; –accent2-light:#f5ddb0;
+–bg:#fffaf6; –surface:#fdf0e8; –highlight:#8b3020;
+–dark:#1a0e08; –charcoal:#3a2018; –mid:#906850; –muted:#c8a888;
+–white:#ffffff; –border:rgba(232,122,90,0.22);
+–shadow:0 8px 40px rgba(139,48,32,0.10);
+–shadow-lg:0 20px 60px rgba(139,48,32,0.18);
+–glow1:rgba(232,122,90,0.09); –glow2:rgba(139,48,32,0.07);
+–required:#b34a50;
+}
+
+/* ── Pearl White ── */
+html[data-theme=“pearl”] {
+color-scheme: light;
+–accent1:#a8b8c8; –accent1-deep:#708898; –accent1-pale:#f0f4f8;
+–accent2:#c8b890; –accent2-light:#e8dcc8;
+–bg:#f8f9fb; –surface:#edf0f4; –highlight:#3a5068;
+–dark:#101820; –charcoal:#283040; –mid:#607888; –muted:#a0b0c0;
+–white:#ffffff; –border:rgba(168,184,200,0.30);
+–shadow:0 8px 40px rgba(58,80,104,0.09);
+–shadow-lg:0 20px 60px rgba(58,80,104,0.16);
+–glow1:rgba(168,184,200,0.10); –glow2:rgba(58,80,104,0.07);
+–required:#b34a50;
+}
+
+/* ── Mint Gloss ── */
+html[data-theme=“mint”] {
+color-scheme: light;
+–accent1:#7ac8b0; –accent1-deep:#4a9880; –accent1-pale:#e8f8f4;
+–accent2:#a8d8c0; –accent2-light:#d0f0e4;
+–bg:#f4fcf9; –surface:#e8f6f0; –highlight:#1a6850;
+–dark:#0a1e18; –charcoal:#183028; –mid:#508870; –muted:#90c0a8;
+–white:#ffffff; –border:rgba(122,200,176,0.28);
+–shadow:0 8px 40px rgba(26,104,80,0.10);
+–shadow-lg:0 20px 60px rgba(26,104,80,0.18);
+–glow1:rgba(122,200,176,0.10); –glow2:rgba(26,104,80,0.07);
+–required:#b34a50;
+}
+
+/* ── Midnight Cherry — intentionally dark, leave as-is ── */
+html[data-theme=“midnight”] {
+color-scheme: dark;
+}
+
+/* Force background/text on all non-midnight themes */
 html:not([data-theme=“midnight”]) body {
 background-color: var(–bg) !important;
 color: var(–charcoal) !important;
