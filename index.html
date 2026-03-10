@@ -1082,10 +1082,96 @@ function buildThemeGrid(){
     </div>`).join('');
 }
 
+/* ====================================================
+   THEME VARIABLE MAP — used by JS to inject directly
+   into <style> so iOS dark mode cannot override them
+==================================================== */
+const THEME_VARS = {
+  default: {
+    '--accent1':'#c8917a','--accent1-deep':'#a0614a','--accent1-pale':'#f5e8e2',
+    '--accent2':'#c9a96e','--accent2-light':'#e8d5b0',
+    '--bg':'#faf6f2','--surface':'#f2ebe3','--highlight':'#6b2d3e',
+    '--dark':'#1a1410','--charcoal':'#3a2e28','--mid':'#8a7060','--muted':'#b8a898',
+    '--white':'#ffffff','--border':'rgba(201,169,110,0.25)',
+    '--shadow':'0 8px 40px rgba(106,45,62,0.10)',
+    '--shadow-lg':'0 20px 60px rgba(106,45,62,0.18)',
+    '--glow1':'rgba(200,145,122,0.08)','--glow2':'rgba(107,45,62,0.07)',
+    '--required':'#b34a50',
+  },
+  lavender: {
+    '--accent1':'#b48ecf','--accent1-deep':'#8a5eae','--accent1-pale':'#f0e8f8',
+    '--accent2':'#c4a8d8','--accent2-light':'#ecdff5',
+    '--bg':'#faf7fc','--surface':'#f3edf8','--highlight':'#5c2d7a',
+    '--dark':'#1a1020','--charcoal':'#3a2850','--mid':'#7a6090','--muted':'#b8a8c8',
+    '--white':'#ffffff','--border':'rgba(180,142,207,0.28)',
+    '--shadow':'0 8px 40px rgba(92,45,122,0.10)',
+    '--shadow-lg':'0 20px 60px rgba(92,45,122,0.18)',
+    '--glow1':'rgba(180,142,207,0.10)','--glow2':'rgba(92,45,122,0.07)',
+    '--required':'#b34a50',
+  },
+  coral: {
+    '--accent1':'#e87a5a','--accent1-deep':'#c05030','--accent1-pale':'#fdf0ec',
+    '--accent2':'#e8b86e','--accent2-light':'#f5ddb0',
+    '--bg':'#fffaf6','--surface':'#fdf0e8','--highlight':'#8b3020',
+    '--dark':'#1a0e08','--charcoal':'#3a2018','--mid':'#906850','--muted':'#c8a888',
+    '--white':'#ffffff','--border':'rgba(232,122,90,0.22)',
+    '--shadow':'0 8px 40px rgba(139,48,32,0.10)',
+    '--shadow-lg':'0 20px 60px rgba(139,48,32,0.18)',
+    '--glow1':'rgba(232,122,90,0.09)','--glow2':'rgba(139,48,32,0.07)',
+    '--required':'#b34a50',
+  },
+  midnight: {
+    '--accent1':'#c86080','--accent1-deep':'#a04060','--accent1-pale':'#2a1828',
+    '--accent2':'#d4a0b8','--accent2-light':'#7a4860',
+    '--bg':'#120c10','--surface':'#1e1218','--highlight':'#e080a0',
+    '--dark':'#f5e8f0','--charcoal':'#e0c8d8','--mid':'#a88898','--muted':'#786070',
+    '--white':'#1e1218','--border':'rgba(200,96,128,0.20)',
+    '--shadow':'0 8px 40px rgba(0,0,0,0.35)',
+    '--shadow-lg':'0 20px 60px rgba(0,0,0,0.50)',
+    '--glow1':'rgba(200,96,128,0.12)','--glow2':'rgba(100,30,60,0.15)',
+    '--required':'#ff6080',
+  },
+  pearl: {
+    '--accent1':'#a8b8c8','--accent1-deep':'#708898','--accent1-pale':'#f0f4f8',
+    '--accent2':'#c8b890','--accent2-light':'#e8dcc8',
+    '--bg':'#f8f9fb','--surface':'#edf0f4','--highlight':'#3a5068',
+    '--dark':'#101820','--charcoal':'#283040','--mid':'#607888','--muted':'#a0b0c0',
+    '--white':'#ffffff','--border':'rgba(168,184,200,0.30)',
+    '--shadow':'0 8px 40px rgba(58,80,104,0.09)',
+    '--shadow-lg':'0 20px 60px rgba(58,80,104,0.16)',
+    '--glow1':'rgba(168,184,200,0.10)','--glow2':'rgba(58,80,104,0.07)',
+    '--required':'#b34a50',
+  },
+  mint: {
+    '--accent1':'#7ac8b0','--accent1-deep':'#4a9880','--accent1-pale':'#e8f8f4',
+    '--accent2':'#a8d8c0','--accent2-light':'#d0f0e4',
+    '--bg':'#f4fcf9','--surface':'#e8f6f0','--highlight':'#1a6850',
+    '--dark':'#0a1e18','--charcoal':'#183028','--mid':'#508870','--muted':'#90c0a8',
+    '--white':'#ffffff','--border':'rgba(122,200,176,0.28)',
+    '--shadow':'0 8px 40px rgba(26,104,80,0.10)',
+    '--shadow-lg':'0 20px 60px rgba(26,104,80,0.18)',
+    '--glow1':'rgba(122,200,176,0.10)','--glow2':'rgba(26,104,80,0.07)',
+    '--required':'#b34a50',
+  },
+};
+
 function applyTheme(id, cardEl){
-  const prev = document.documentElement.getAttribute('data-theme')||'default';
+  // Set data-theme for CSS selectors that still need it
   if(id==='default') document.documentElement.removeAttribute('data-theme');
-  else document.documentElement.setAttribute('data-theme',id);
+  else document.documentElement.setAttribute('data-theme', id);
+
+  // Inject variables directly into <style> — iOS-proof
+  const vars = THEME_VARS[id] || THEME_VARS['default'];
+  const varStr = Object.entries(vars).map(([k,v])=>`${k}:${v};`).join('');
+  let el = document.getElementById('theme-inject');
+  if(!el){ el=document.createElement('style'); el.id='theme-inject'; document.head.appendChild(el); }
+  el.textContent = `:root{${varStr}}`;
+
+  // Force color-scheme via inline style (highest specificity on iOS)
+  document.documentElement.style.colorScheme = id==='midnight' ? 'dark' : 'light';
+  // Also force html background directly
+  if(id!=='midnight') document.documentElement.style.backgroundColor = vars['--bg'];
+
   document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));
   if(cardEl) cardEl.classList.add('active');
   dbPut('settings',{key:'theme',value:id});
