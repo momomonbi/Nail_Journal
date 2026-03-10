@@ -104,7 +104,7 @@ html[data-theme=“mint”] {
 BASE RESET & BODY
 ===================================================== */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-html{color-scheme:light only;}
+html{color-scheme:light only; background:#faf6f2;}
 body{font-family:‘DM Sans’,sans-serif;background:var(–bg);color:var(–charcoal);min-height:100vh;overflow-x:hidden;transition:background .4s,color .4s;-webkit-text-size-adjust:100%;}
 body::before{content:’’;position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,var(–glow1) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 90%,var(–glow2) 0%,transparent 60%);pointer-events:none;z-index:0;}
 
@@ -490,6 +490,40 @@ border:none;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(–bg);} ::-webkit-scrollbar-thumb{background:var(–rose);}
+
+/* =====================================================
+FORCE LIGHT MODE — iOS dark mode override
+Re-assert all default (Rose Quartz) variables so
+iOS Safari dark mode cannot override them.
+Theme switching still works via html[data-theme].
+===================================================== */
+@media (prefers-color-scheme: dark) {
+html:not([data-theme]) {
+–accent1:#c8917a; –accent1-deep:#a0614a; –accent1-pale:#f5e8e2;
+–accent2:#c9a96e; –accent2-light:#e8d5b0;
+–bg:#faf6f2; –surface:#f2ebe3;
+–highlight:#6b2d3e;
+–dark:#1a1410; –charcoal:#3a2e28; –mid:#8a7060; –muted:#b8a898;
+–white:#ffffff;
+–border:rgba(201,169,110,0.25);
+–shadow:0 8px 40px rgba(106,45,62,0.10);
+–shadow-lg:0 20px 60px rgba(106,45,62,0.18);
+–glow1:rgba(200,145,122,0.08); –glow2:rgba(107,45,62,0.07);
+–required:#b34a50;
+color-scheme: light;
+}
+html[data-theme=“lavender”]:not([data-theme=“midnight”]) {
+color-scheme: light;
+}
+html[data-theme=“coral”] { color-scheme: light; }
+html[data-theme=“pearl”] { color-scheme: light; }
+html[data-theme=“mint”]  { color-scheme: light; }
+/* midnight is intentionally dark — leave it */
+html:not([data-theme=“midnight”]) body {
+background-color: var(–bg) !important;
+color: var(–charcoal) !important;
+}
+}
 
 /* =====================================================
 RESPONSIVE
