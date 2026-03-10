@@ -290,15 +290,15 @@ MODAL
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(5px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-backdrop.open{display:flex;animation:bdIn .3s ease;}
 @keyframes bdIn{from{opacity:0;}to{opacity:1;}}
-.modal{background:var(–white);color:var(–charcoal);width:100%;max-width:700px;max-height:92vh;overflow-y:auto;position:relative;animation:mIn .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,.3);}
+.modal{background:#ffffff;color:var(–charcoal);width:100%;max-width:700px;max-height:92vh;overflow-y:auto;position:relative;animation:mIn .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,.3);}
 @keyframes mIn{from{opacity:0;transform:translateY(28px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal.detail-modal{max-width:780px;}
-.modal-header{padding:28px 36px 20px;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:var(–white);color:var(–charcoal);z-index:5;}
+.modal-header{padding:28px 36px 20px;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:#ffffff;color:var(–charcoal);z-index:5;}
 .modal-title{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:300;color:var(–dark);}
 .modal-eyebrow{font-family:‘Cinzel’,serif;font-size:8px;letter-spacing:3px;color:var(–gold);margin-bottom:3px;}
 .modal-close{width:34px;height:34px;background:var(–surface);border:1px solid var(–border);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;color:var(–charcoal);}
 .modal-close:hover{background:var(–dark);color:#ffffff;}
-.modal-body{padding:24px 36px 32px;background:var(–white);color:var(–charcoal);}
+.modal-body{padding:24px 36px 32px;background:#ffffff;color:var(–charcoal);}
 
 /* =====================================================
 FORM
@@ -580,12 +580,12 @@ background-color: var(–bg) !important;
 color: var(–charcoal) !important;
 }
 
-/* Modal — must always be fully opaque light */
+/* Modal — must always be fully opaque */
 html:not([data-theme=“midnight”]) .modal,
 html:not([data-theme=“midnight”]) .modal-header,
 html:not([data-theme=“midnight”]) .modal-body,
 html:not([data-theme=“midnight”]) .detail-inner {
-background-color: var(–white) !important;
+background-color: #ffffff !important;
 color: var(–charcoal) !important;
 }
 html:not([data-theme=“midnight”]) .modal-title {
